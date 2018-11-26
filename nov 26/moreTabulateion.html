@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <script  src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"></script>
+    <script type="text/javascript" src="C:/Users/Wes/Desktop/webApp/jsonTesting.js"></script>
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        data = buildTable();
+        childSpawn('example');
+        if (logCheck() == 0){
+          data = buildFavs();
+          childSpawn('favorite');
+        }
+      });
+    </script>
+    <div class = "d-flex justify-content-center">
+      <div class="btn-group">
+          <button  class="btn btn-info" onclick="openForm('log')">sign in</button>
+          <button  class="btn btn-info" onclick="openForm('regi')">register</button>
+      </div>
+    </div>
+    
+    <div class="userInput" id="log">
+      <form action="/action_page.php" class="form-container">
+        <h1>Login</h1>
+
+        <label for="Uname"><b>User name</b></label>
+        <input type="text" placeholder="Enter user name" name="Uname" required>
+
+        <label for="pwd"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="pwd" required>
+
+        <button type="submit" class="btn">Login</button>
+        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+      </form>
+    </div>
+
+    <div class="tab">
+      <button class="link" onclick="tabulate(event, 'menu')" id = "default">menu</button>
+      <button class="link" onclick="tabulate(event, 'favorites')" id="fav">favorites</button>
+</div>
+
+<div id="menu" class="content">
+
+    <div class = "table-responive">
+      <table id="example" class="table table-striped" style="width:100%">
+          <thead class = "thead-dark">
+              <tr>
+                  <th>Name</th>
+                  <th>Type</th>
+                  <th>Rating</th>
+                  <th>Price</th>
+                  <th>Description</th>
+              </tr>
+          </thead>
+          <tbody>
+            <!--do not put anything here, ever -->
+          </tbody>
+      </table>
+
+  </div>
+
+</div>
+
+<div id="favorites" class="content">
+    <div class = "table-responive">
+      <table id="favorite" class="table table-striped" style="width:100%">
+          <thead class = "thead-dark">
+              <tr>
+                  <th>Name</th>
+                  <th>Type</th>
+                  <th>Rating</th>
+                  <th>Price</th>
+                  <th>Description</th>
+              </tr>
+          </thead>
+          <tbody>
+            <!--do not put anything here, ever -->
+          </tbody>
+      </table>
+
+</div>
+
+<script>
+document.getElementById("default").click();
+</script>
+
+</body>
+</html>
+
+  </body>
+</html>
