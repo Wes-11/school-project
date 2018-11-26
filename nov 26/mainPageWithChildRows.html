@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>index</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+<script  src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"></script>
+<script type="text/javascript">
+
+ $(document).ready(function(){
+  var beer =     [["turbodog", "type", 4.5, 3.1, 1],
+                  ['Alaskan stout', 'type', 4.9, 5.0, 1],
+                  ['allagash tripple', 'type', 3.7, 4.0, 0],
+                  ['liberty ale', 'type', 2.4, 6.8, 0],
+                  ['steam beer', 'type', 4.8, 3.9, 1],
+                  ['hop ottin', 'type', 3.6, 7.8, 0],
+                  ['old foghorn', 'type', 3.0, 7.8, 1],
+                  ['poleeko gold', 'type', 2.8, 5.3, 0],
+                  ['allagash white', 'type', 4.5, 5.1, 0],
+                  ['oberon', 'type', 3.0, 4.4, 0]]
+
+        $.each(beer, function( rowIndex, row ) {
+          var data = "<tr><td id = \"control\">" + row[0] + "</td><td>" + row[1] + "</td><td>"+ row[2] +"</td><td>" + row[3]+"</td></tr>";
+          $("table tbody").append(data);
+        });
+    });
+</script>
+</head>
+<body>
+  <script type="text/javascript">
+    function logCheck(){
+        if (sessionStorage.getItem('status') == null){
+          alert("please sign in to use this feature")
+        }
+    }
+
+  </script>
+<div class = "d-flex justify-content-center">
+  <div class="btn-group">
+      <button type="submit" class="btn btn-info">sign in</button>
+      <button type="submit" class="btn btn-info">register</button>
+      <button onclick="logCheck()" type="submit" class="btn btn-info">Favorites</button>
+
+  </div>
+</div>
+  <script>
+  $(document).ready(function() {
+    $('#example').DataTable( {
+        "paging":   false,
+        "ordering": true,
+        "info":     false
+
+    } );
+    var table = $('#example').DataTable();
+    function format (data) {
+        // because we are expecting a json object data.description will suffice
+        // `d` is the original data object for the row
+        return '<table cellpadding="0" cellspacing="0" border="0" style="padding-left:50px;">'+
+            '<tr>'+
+            '<td><div class="d-inline-flex">'+
+                 '<div class = "card rounded" style = "width: 50%;">' +
+                        "<p style = \"font-size:80%;\"> really this is where the description goes which will be under the name data.description, for now this is just a place holder. Also the fact that javascript doesn't support multi line strings is hilarious </p>"   +
+                  '</div>' +
+                 '<div  class = "card" style = "width: 50%;">' +
+                  '<form action="/review.js" method = "POST" >' +
+                    '<input type="text"  placeholder = "/5" class="form-control form-control-lg"  style="width:100%;">'+
+                    '</div>'+
+            '</div> <button type="submit" class="btn btn-info" style = "width:100%">submit</button></td>' +
+            '</tr>';
+        '</table>';
+    }
+$('#example tbody').on('click', '#control', function () {
+    var tr = $(this).parents('tr');
+    var row = table.row( tr );
+    if ( row.child.isShown() ) {
+        // close an open row
+        row.child.hide();
+        tr.removeClass('shown');
+    }
+    else {
+        // open a row
+        //data comes from the json object
+        row.child( format(row.data()) ).show();
+        tr.addClass('shown');
+    }
+} );
+} );
+  </script>
+  <div class = "table-responive">
+    <table id="example" class="table table-striped" style="width:100%">
+        <thead class = "thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Rating</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
