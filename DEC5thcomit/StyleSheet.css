@@ -1,0 +1,11 @@
+.logregi{
+  position: center;
+  display:none;
+  width:60%;
+}
+#user{
+  position: relative;
+}
+#pass{
+  position: relative;
+}
