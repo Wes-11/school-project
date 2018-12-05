@@ -3,7 +3,7 @@ var app     = express();
 var path    = require("path");
 var http = require('http');
 var sanitize = require('validator')
-var modules = require('C:/Users/Wes/Desktop/Nov29thServerPractice/modules.js')
+var modules = require('/modules.js')
 var db = mysql.createPool({
   connectionLimit: 100,
   host: "localhost",
@@ -13,16 +13,16 @@ var db = mysql.createPool({
 }); //makes use of auto timeout native to the package
 //app.use(express.static('use absolute path for testing'));
 //lots of things commented out because it's 2AM and I can't be bothered to go double checking form names
-app.use(express.static('C:/Users/Wes/Desktop/Nov29thServerPractice'));
+app.use(express.static('/'));
 app.get('/',function(req,res){
   //another absolute path for path.join(''));
-res.sendFile(path.join('C:/Users/Wes/Desktop/Nov29thServerPractice/main.html'));
+res.sendFile(path.join('/main.html'));
 });
 app.get('/beer', function(req,res){
   functions.getBeers(function(data){
     res.send(data);
   })
-res.sendFile(path.join('C:/Users/Wes/Desktop/Nov29thServerPractice/main.html'));
+res.sendFile(path.join('/main.html'));
 });
 app.post('/login',function(req,res){
   var password = req.body.psw;
