@@ -21,7 +21,7 @@ module.exports = {
     }
   },
   log: function( name, password, fn ){
-    var methods = require('C:/Users/Wes/Desktop/Nov29thServerPractice/modules.js');
+    var methods = require(/modules.js');
     sql = "SELECT password, salt FROM users WHERE username = ?"
     var name = name;
     db.query(sql, name, function (err, result){
@@ -43,7 +43,7 @@ module.exports = {
     });
   },
   createAccount : function(name, email, password){
-    var methods = require('C:/Users/Wes/Desktop/Nov29thServerPractice/modules.js');
+    var methods = require('/modules.js');
     var hashed = methods.hash(password);
     var pass = hashed.hashed;
     var salt = hashed.salt;
