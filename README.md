@@ -1,5 +1,5 @@
 # school-project
-
+VIEW RAW FOR TABLE STRUCTURE
 MILESTONE 4 STATUS: All required functions are working but there is obvious room for optimization.
 TABLE STRUCTURE: USERS
 +-------------------+--------------+    
