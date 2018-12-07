@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  <style media="screen">
+    .for-wrap{
+      width: 70px;
+    }
+    .form-inline {
+      display: inline-block;
+      align-items: left;
+      margin: 10px;
+      border: 5px;
+      padding: 5px;
+      display: flex; /* 2. display flex to the rescue */
+      flex-direction: row;
+      width: 0px
+
+    }
+    .form-group{
+      padding: 5px;
+    }
+  </style>
+    <meta charset="utf-8">
+    <title>admin</title>
+    <script type="text/javascript">
+      function addRow(){
+
+        var row = '<br>'+
+                '<div class = "form-group">'+
+                  '<br>'+
+                      '<input type="text" name="beerName" class="form-control"   placeholder="beer name" value="">' +
+                      '<input type="text" name="type" class="form-control"  placeholder="type" value="">' +
+                      '<input type="text" name="description" class="form-control"  placeholder="description" value="">' +
+                      '<input type="text" name="price" class="form-control"   placeholder="price" value="">'
+                  '</div>'+
+                  '<br>';
+
+
+       $(".form-inline").append(row)
+       }
+       function addBox(){
+         var box = '<input type="text" name="beerName" class="form-control" id="toRemove" class="admin-input"  placeholder="beer name" value="">';
+         $("#remove").append(box)
+       }
+//        function submit(){
+//          $( ".form-inline" ).submit(function( event ) {
+//            console.log("testing")
+//             alert( "Handler for .submit() called." );
+//             event.preventDefault();
+// });
+//        }
+
+    </script>
+  </head>
+  <body>
+    <button type="button" onclick="addRow()" name="button" > add rows </button>
+    <div class="form-wrap">
+
+
+    <form class="form-inline"  action="/addBeers" method="post" name="regForm">
+      <input type="submit" value="Submit">
+      <br>
+            <div class="form-group">
+
+                <input type="text" name="beerName" class="form-control"   placeholder="beer name" value="">
+                <input type="text" name="type" class="form-control"  placeholder="type" value="">
+                <input type="text" name="description" class="form-control"   placeholder="description" value="">
+                <input type="text" name="price" class="form-control"  placeholder="price" value="">
+            </div>
+
+
+
+        </form>
+        <button type="button" onclick="addBox()" name="button" > add box </button>
+        <form class="form" id="remove"  action="/removeBeer" method="post" name="regForm" style="width:120px">
+          <input type="submit" value="Submit">
+          <br>
+                <div class="form-group">
+                    <input type="text" name="beerName" class="form-control" id="toRemove"  placeholder="beer name" value="">
+                </div>
+
+
+
+            </form>
+        </div>
+
+  </body>
+</html>

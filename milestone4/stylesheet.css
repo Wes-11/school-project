@@ -1,0 +1,26 @@
+.form-inline {
+  display: inline-block;
+  /*flex-flow: row wrap;*/
+  align-items: center;
+  margin: 10px;
+  border: 5px;
+  padding: 5px;
+  display: flex; /* 2. display flex to the rescue */
+  flex-direction: row;
+  width: 0px
+}
+.admin-input{
+border: 1px solid red;
+margin: 10px;
+border: 50px;
+padding: 50px
+}
+input{
+  border: 1px solid red;
+}
+.form-group{
+  padding: 5px;
+}
+.for-wrap{
+  width: 70px;
+}
