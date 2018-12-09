@@ -1,0 +1,30 @@
+{
+  "name": "BEER_TRACKING_APP",
+  "version": "0.6.0",
+  "description": "this is an early build that has all working features but requires styling and db connection optimization
+                  EDIT: added addditional functions and removed code no longer being used from modules consisting of
+                  1) getUnique
+                  2) isUnique
+                  3) create account
+                  4) updateFav
+                  IMPROVED:
+                  1) some bad DB connections have been fixed to properly release the connection back to the pool
+                  2) commented code was removed
+                  3) many console.log lines were removed as they were no longer necessary",
+  "main": "newServer.js",
+  "scripts": {
+    "start": "newServer.js"
+  },
+  "dependencies": {
+    "@mysql/xdevapi": "file:Downloads/mysql-connector-nodejs-8.0.13.tar.gz",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mysql": "^2.16.0",
+    "validator": "^10.9.0"
+  },
+  "dev_dependencies":{
+    "js-beautify": "^1.8.10-beta1",
+  },
+  "author": "wes",
+  "license": "ISC"
+}
