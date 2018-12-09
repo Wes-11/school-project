@@ -17,7 +17,7 @@ module.exports = {
     }
   },
   log: function(name, password, fn) {
-    var methods = require('C:/Users/Wes/Desktop/ver_0.5.9/modules.js');
+    var methods = require('path_to_this_file');
     sql = "SELECT password, salt FROM users WHERE username = ?"
     var name = name;
     db.query(sql, name, function(err, result) {
