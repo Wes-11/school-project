@@ -6,7 +6,7 @@ var path = require('path');
 var http = require('http');
 var https = require('https')
 var sanitize = require('validator')
-var modules = require('C:/Users/Wes/Desktop/ver_0.5.9/modules.js')
+var modules = require(__dirname + '/modules.js')
 app.use(bodyParser.raw());
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
@@ -19,9 +19,9 @@ var db = mysql.createPool({
   database: "web_app_final"
 }); //makes use of auto timeout native to the package
 'C:/Users/Wes/Desktop/ver_0.5.9'
-app.use(express.static('C:/Users/Wes/Desktop/ver_0.5.9'));
+app.use(express.static(__dirname + '/ver_0.5.9'));
 app.get('/index', function(req, res) {
-  res.sendFile(path.join('C:/Users/Wes/Desktop/ver_0.5.9/index.html'));
+  res.sendFile(path.join(__dirname + '/ver_0.5.9/index.html'));
 });
 app.get('/beer', function(req, res) {
   console.log("/beer", req.body)
@@ -32,7 +32,7 @@ app.get('/beer', function(req, res) {
   })
 });
 app.get('/admin', function(req, res){
-    res.sendFile(path.join('C:/Users/Wes/Desktop/ver_0.5.9/admin.html'))
+    res.sendFile(path.join(__dirname + '/ver_0.5.9/admin.html'))
 });
 app.post('/log', function (req, res) {
   var pw = req.body.passT;
@@ -44,18 +44,15 @@ app.post('/log', function (req, res) {
     console.log(fn)
     if(fn == "succesful" && s == "admin"){
       res.redirect('/admin')
-        //res.sendFile(path.join('C:/Users/Wes/Desktop/milestone4/admin.html'));
+     
     } else {
         res.cookie('username', un, {maxAge: 3600000});
         res.redirect('back')
-        //res.sendFile(path.join('C:/Users/Wes/Desktop/milestone4/index.html'));
     }
 
   })
 })
 app.post('/fav', function(req, res){
-  //console.log("/fav",req.body)
-  //console.log("/fav",req.body)
   modules.buildFavTable(req.body.user, function( fn ){
     console.log("response from favorties module ", fn)
     res.json(fn)
@@ -105,4 +102,4 @@ app.post('/removeBeer', function(req, res){
   modules.offTap(req.body.beerName)
   res.redirect('back')
 })
-app.listen(3036);
+app.listen(80);
