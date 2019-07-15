@@ -87,11 +87,8 @@ app.post('/addBeers', function(req, res){
   price = req.body.price
   l = name.length
   for(var i in l){
-    //should really put a delay on this function, might get ahead of the query
     modules.addBeers(name[i], type[i], description[i], price[i])
   }
-
-  //test.addBeers(name, type, description, price)
 })
 app.post('/removeBeer', function(req, res){
   modules.offTap(req.body.name)
